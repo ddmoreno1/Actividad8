@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de la serie de fibonacci en Webassembly</title>
+</head>
+<body>
+    <script>
+        // Cargar el módulo de WebAssembly
+        fetch("fibo.wasm")
+        .then(response => response.arrayBuffer())
+        .then(bytes => WebAssembly.instantiate(bytes))
+        .then(results => {
+            // Ejecutar la función principal del módulo
+            results.instance.exports.main();
+        })
+        .catch(console.error);
+    </script>
+</body>
+</html>
